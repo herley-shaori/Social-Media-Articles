@@ -30,6 +30,14 @@ spark.sql.adaptive.enabled=false
 spark.sql.shuffle.partitions=200
 ```
 
+The full, runnable script (`experiment.py`) is included alongside this article. Both experiments below were produced by running it directly:
+
+```
+docker pull apache/spark:3.5.1-python3
+docker run --rm -v "$(pwd)":/work apache/spark:3.5.1-python3 /opt/spark/bin/spark-submit /work/experiment.py false
+docker run --rm -v "$(pwd)":/work apache/spark:3.5.1-python3 /opt/spark/bin/spark-submit /work/experiment.py true
+```
+
 ### Evidence
 
 The physical plan produced by `.explain(True)` shows the shuffle exchange is planned with exactly 200 partitions, regardless of the fact that the aggregation only produces 10 output rows:
