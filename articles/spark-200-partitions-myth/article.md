@@ -1,5 +1,7 @@
 # The "200 Partitions" Myth: Why Adaptive Query Execution Changes Everything You Thought You Knew About Spark Shuffle Tuning
 
+> This article is also published on Medium: [The "200 Partitions" Myth in Spark](https://herley-shaori.medium.com/thread-the-200-partitions-myth-in-spark-4b2f0ee86f9d)
+
 ## Introduction
 
 Almost every Spark practitioner has, at some point, copy-pasted `spark.sql.shuffle.partitions=200` into a cluster configuration without questioning why. The number has become folklore: a default so widely repeated that it is rarely re-examined, even as Spark itself has evolved past the assumptions that produced it. This article dismantles that assumption empirically, using small, reproducible datasets and real execution evidence, and shows how Adaptive Query Execution (AQE) has quietly rewritten the rules of shuffle partition tuning.
