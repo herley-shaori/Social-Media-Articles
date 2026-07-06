@@ -95,6 +95,12 @@ The key detail is `isFinalPlan=false`: this is the plan Spark starts with, not t
 
 AQE collapsed 200 planned partitions down to a single final partition, because the actual post-shuffle data size for this workload does not warrant more. The result set is identical; the execution path is not.
 
+The diagram below summarizes both execution paths side by side, from query planning through to the final measured result:
+
+![Flowchart comparing Spark shuffle execution without AQE (left, static 200 partitions) versus with AQE enabled (right, runtime coalescing to 1 partition)](images/aqe-coalesce-flow.png)
+
+*Figure 1: Both runs start from the same plan, `spark.sql.shuffle.partitions=200`, and the same shuffle map stage. Without AQE (left path), Spark commits to the `Exchange hashpartitioning(key, 200)` step and schedules 200 reduce tasks regardless of actual data volume. With AQE (right path), the coalescing logic reads the real post-shuffle partition sizes at runtime, merges them toward the `advisoryPartitionSizeInBytes` target of 64MB, and rewrites the physical plan from `isFinalPlan=false` to `isFinalPlan=true` before the reduce stage runs. The two paths diverge only after the "Is AQE enabled?" decision, but that single decision is what separates 200 scheduled tasks from 1.*
+
 ## Analysis: What Is Actually Happening
 
 AQE's partition coalescing is governed by two configuration parameters that are rarely discussed outside of Spark's internals documentation:
