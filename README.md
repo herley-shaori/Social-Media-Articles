@@ -1,32 +1,32 @@
 # Social Media Articles
 
-Repositori ini adalah kumpulan artikel teknis yang saya tulis sebagai bagian dari proses belajar dan berbagi pengetahuan. Beberapa artikel mungkin akan dipublikasikan ulang di Medium atau LinkedIn, tapi banyak juga yang cukup dipublikasikan di sini saja, di GitHub.
+This repository is a collection of technical articles I write as part of my own learning process and knowledge sharing. Some articles may later be republished on Medium or LinkedIn, while others may simply stay here on GitHub.
 
-## Tentang Repositori Ini
+## About This Repository
 
-Setiap artikel disimpan dalam satu folder tersendiri di dalam `articles/`, berisi:
+Each article lives in its own folder under `articles/`, containing:
 
-- `article.md` — artikel utama dalam format Markdown.
-- `images/` — gambar atau diagram pendukung artikel.
-- `references/` — berkas referensi terkait, bila ada.
-- Kode program (bila ada eksperimen atau demo teknis), agar setiap klaim di artikel bisa direproduksi dan diverifikasi sendiri oleh pembaca.
+- `article.md` — the main article in Markdown format.
+- `images/` — supporting images or diagrams for the article.
+- `references/` — related reference material, when applicable.
+- Source code (when the article includes experiments or technical demos), so every claim made in the article can be reproduced and verified by the reader.
 
-## Struktur Folder
+## Folder Structure
 
 ```
 articles/
-└── nama-artikel/
+└── article-name/
     ├── article.md
     ├── images/
     └── references/
 ```
 
-## Catatan dari Penulis
+## A Note from the Author
 
-Artikel-artikel di sini ditulis berdasarkan eksplorasi teknis dan eksperimen langsung, bukan sekadar teori. Meski begitu, saya menyadari mungkin masih ada kesalahan, kekurangan, atau interpretasi yang bisa diperdebatkan di beberapa bagian. Jika Anda menemukan hal seperti itu, mohon maaf sebelumnya, dan koreksi akan sangat saya hargai — bisa lewat issue atau pull request.
+The articles here are written based on hands-on technical exploration and real experiments, not theory alone. That said, I recognize there may still be mistakes, gaps, or debatable interpretations in some parts. If you spot any, my apologies in advance, and corrections are genuinely welcome, whether through an issue or a pull request.
 
-Repositori ini murni lahir dari passion menulis dan berbagi, tidak bermaksud menggurui siapa pun. Semoga bermanfaat.
+This repository exists purely out of a passion for writing and sharing, with no intention of talking down to anyone. I hope it's useful.
 
-## Lisensi
+## License
 
-Lihat [LICENSE](LICENSE).
+See [LICENSE](LICENSE).
