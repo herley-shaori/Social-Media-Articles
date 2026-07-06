@@ -8,9 +8,9 @@ The intended audience is senior data engineers and architects who are comfortabl
 
 ## A Brief History of `spark.sql.shuffle.partitions`
 
-The default value of 200 for `spark.sql.shuffle.partitions` originates from Spark's pre-AQE era, when the number of post-shuffle partitions was fixed at planning time and could not be adjusted based on actual runtime data volume. In that era, 200 was a reasonable general-purpose compromise: large enough to parallelize workloads across a modestly sized cluster, small enough to avoid excessive task scheduling overhead for the shuffle workloads common at the time.
+The default value of 200 for `spark.sql.shuffle.partitions` [4] originates from Spark's pre-AQE era, when the number of post-shuffle partitions was fixed at planning time and could not be adjusted based on actual runtime data volume. In that era, 200 was a reasonable general-purpose compromise: large enough to parallelize workloads across a modestly sized cluster, small enough to avoid excessive task scheduling overhead for the shuffle workloads common at the time.
 
-The problem is that this value is static. It is chosen once, at query planning time, regardless of whether the underlying data is a few kilobytes or several terabytes. On a small dataset, this produces a very specific and measurable inefficiency: hundreds of tiny, near-empty partitions, each requiring its own task to be scheduled, launched, and torn down, dwarfing the actual work being done.
+The problem is that this value is static. It is chosen once, at query planning time, regardless of whether the underlying data is a few kilobytes or several terabytes. On a small dataset, this produces a very specific and measurable inefficiency: hundreds of tiny, near-empty partitions, each requiring its own task to be scheduled, launched, and torn down, dwarfing the actual work being done [1].
 
 ## Experiment 1: Debunking the "200 Partitions" Myth
 
@@ -86,7 +86,7 @@ AdaptiveSparkPlan isFinalPlan=false
             +- Range (0, 5000, step=1, splits=14)
 ```
 
-The key detail is `isFinalPlan=false`: this is the plan Spark starts with, not the plan it finishes with. Once the shuffle map stage completes, AQE inspects the actual size of the shuffled data and rewrites the plan before execution continues. The measured result after execution:
+The key detail is `isFinalPlan=false`: this is the plan Spark starts with, not the plan it finishes with. Once the shuffle map stage completes, AQE inspects the actual size of the shuffled data and rewrites the plan before execution continues [2][3]. The measured result after execution:
 
 | Metric | Without AQE | With AQE |
 |---|---|---|
@@ -105,13 +105,13 @@ The diagram below summarizes both execution paths side by side, from query plann
 
 AQE's partition coalescing is governed by two configuration parameters that are rarely discussed outside of Spark's internals documentation:
 
-- **`spark.sql.adaptive.coalescePartitions.enabled`**: turns on the coalescing behavior itself. This is enabled by default alongside `spark.sql.adaptive.enabled` in Spark 3.x, meaning most users are already benefiting from this without realizing it.
-- **`spark.sql.adaptive.advisoryPartitionSizeInBytes`**: the target size AQE aims for when merging small post-shuffle partitions. The default is 64MB. AQE greedily merges adjacent small partitions until this target is approached, rather than blindly using whatever number `spark.sql.shuffle.partitions` specifies.
-- **`spark.sql.adaptive.coalescePartitions.minPartitionSize`**: a floor that prevents over-aggressive coalescing when the advisory size would otherwise produce partitions that are too few for available parallelism.
+- **`spark.sql.adaptive.coalescePartitions.enabled`**: turns on the coalescing behavior itself. This is enabled by default alongside `spark.sql.adaptive.enabled` in Spark 3.x, meaning most users are already benefiting from this without realizing it [2].
+- **`spark.sql.adaptive.advisoryPartitionSizeInBytes`**: the target size AQE aims for when merging small post-shuffle partitions. The default is 64MB. AQE greedily merges adjacent small partitions until this target is approached, rather than blindly using whatever number `spark.sql.shuffle.partitions` specifies [2].
+- **`spark.sql.adaptive.coalescePartitions.minPartitionSize`**: a floor that prevents over-aggressive coalescing when the advisory size would otherwise produce partitions that are too few for available parallelism [2].
 
 In other words, `spark.sql.shuffle.partitions=200` under AQE is no longer "the number of partitions the job will use." It is closer to "the maximum number of partitions AQE will consider before deciding how many are actually needed." This distinction has substantial implications: tuning this value upward to "be safe" no longer directly translates into more parallelism, and tuning it downward no longer risks starving a large job, because AQE can only coalesce, it does not split.
 
-This also clarifies when AQE is not enough. AQE coalescing operates on partition size, not on the number of distinct keys or the semantic shape of the data. Highly skewed joins, where one key dominates the shuffle, are a separate problem addressed by `spark.sql.adaptive.skewJoin.enabled` and its associated thresholds, not by coalescing. Coalescing alone will not fix a job where one partition is 100x larger than the rest, and manual intervention or skew-specific configuration is still warranted in those cases.
+This also clarifies when AQE is not enough. AQE coalescing operates on partition size, not on the number of distinct keys or the semantic shape of the data. Highly skewed joins, where one key dominates the shuffle, are a separate problem addressed by `spark.sql.adaptive.skewJoin.enabled` and its associated thresholds, not by coalescing [2]. Coalescing alone will not fix a job where one partition is 100x larger than the rest, and manual intervention or skew-specific configuration is still warranted in those cases.
 
 ## Practical Checklist
 
@@ -124,7 +124,10 @@ This also clarifies when AQE is not enough. AQE coalescing operates on partition
 
 ## References & Documentation
 
-- Apache Spark SQL Performance Tuning Guide: https://spark.apache.org/docs/latest/sql-performance-tuning.html
-- Adaptive Query Execution (Spark SQL Guide): https://spark.apache.org/docs/latest/sql-performance-tuning.html#adaptive-query-execution
-- SPIP: Adaptive Query Execution (original design proposal): https://issues.apache.org/jira/browse/SPARK-23128
-- Spark Configuration Reference: https://spark.apache.org/docs/latest/configuration.html
+[1] Apache Spark SQL Performance Tuning Guide. https://spark.apache.org/docs/latest/sql-performance-tuning.html
+
+[2] Adaptive Query Execution (Spark SQL Guide). https://spark.apache.org/docs/latest/sql-performance-tuning.html#adaptive-query-execution
+
+[3] SPIP: Adaptive Query Execution (original design proposal). https://issues.apache.org/jira/browse/SPARK-23128
+
+[4] Spark Configuration Reference. https://spark.apache.org/docs/latest/configuration.html
