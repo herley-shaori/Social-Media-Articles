@@ -1,0 +1,10 @@
+# Copy to terraform.tfvars and fill in a globally-unique bucket name prefix.
+# terraform.tfvars itself is gitignored - never commit real bucket names or
+# account-specific values here if they are considered sensitive.
+
+aws_region  = "ap-southeast-1"
+aws_profile = "admin@herley.dev"
+name_prefix = "herley-dev-s3log-demo-CHANGE-ME"
+
+public_read_enabled = true
+nightly_job_allowed  = false
