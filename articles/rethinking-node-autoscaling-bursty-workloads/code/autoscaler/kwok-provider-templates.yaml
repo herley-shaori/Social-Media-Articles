@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kwok-provider-templates
+  namespace: kube-system
+data:
+  templates: |-
+    apiVersion: v1
+    kind: List
+    items:
+    - apiVersion: v1
+      kind: Node
+      metadata:
+        annotations:
+          # Nodegroup identity and size bounds read by the kwok cloud provider.
+          cluster-autoscaler.kwok.nodegroup/name: burst
+          cluster-autoscaler.kwok.nodegroup/min-count: "0"
+          cluster-autoscaler.kwok.nodegroup/max-count: "50"
+          # Marks the node as KWOK-managed so the in-cluster KWOK controller drives its lifecycle.
+          kwok.x-k8s.io/node: fake
+        labels:
+          kubernetes.io/arch: amd64
+          kubernetes.io/os: linux
+          kubernetes.io/role: agent
+          type: kwok
+          # Grouping label referenced by fromNodeLabelKey in kwok-provider-config.
+          kwok-nodegroup: burst
+          node.kubernetes.io/instance-type: kwok-8vcpu-16gb
+        name: kwok-burst-template
+      spec:
+        # Born NotReady + tainted, exactly like a real node that is still
+        # booting. The taint blocks scheduling until the node-initialize KWOK
+        # stage flips Ready=True (after the simulated boot delay) and the node
+        # lifecycle controller clears the taint. This is what makes the boot
+        # delay actually gate pod placement.
+        taints:
+          - key: node.kubernetes.io/not-ready
+            effect: NoSchedule
+      status:
+        conditions:
+          - type: Ready
+            status: "False"
+            reason: KWOKNodeBooting
+            message: "Simulated node is still booting"
+            lastHeartbeatTime: "2024-01-01T00:00:00Z"
+            lastTransitionTime: "2024-01-01T00:00:00Z"
+        allocatable:
+          cpu: "8"
+          memory: 16Gi
+          pods: "110"
+        capacity:
+          cpu: "8"
+          memory: 16Gi
+          pods: "110"
+        nodeInfo:
+          architecture: amd64
+          operatingSystem: linux
