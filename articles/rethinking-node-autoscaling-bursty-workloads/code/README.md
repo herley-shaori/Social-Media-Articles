@@ -1,5 +1,9 @@
 # Rethinking Node Autoscaling for Bursty Workloads — Experiment Code
 
+> **Published:** the full article is live at **https://herley.dev** (hosted on
+> Cloudflare). This repository holds only the standalone experiment code that
+> the article references.
+
 Reproducible, Docker-only harness backing the article *Rethinking Node
 Autoscaling for Bursty Workloads*. It provisions a local Kubernetes cluster,
 simulates node-boot latency, and measures how a 100-pod burst is served under
