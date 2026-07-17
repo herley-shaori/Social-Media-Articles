@@ -1,0 +1,7 @@
+reactive boot= 5s  n=100/100  p50=11s p95=12s max=12s nodes=15
+reactive boot=15s  n=100/100  p50=20s p95=21s max=21s nodes=15
+reactive boot=30s  n=100/100  p50=35s p95=37s max=37s nodes=15
+reactive boot=45s  n=100/100  p50=48s p95=51s max=51s nodes=15
+reactive boot=60s  n=100/100  p50=63s p95=66s max=66s nodes=15
+reactive boot=90s  n=100/100  p50=94s p95=96s max=97s nodes=15
+headroom boot=45s  n=100/100  p50=3s p95=5s max=5s nodes=15

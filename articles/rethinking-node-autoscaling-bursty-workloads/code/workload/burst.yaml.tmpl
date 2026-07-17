@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: burst
+  labels:
+    app: burst
+spec:
+  replicas: __REPLICAS__
+  selector:
+    matchLabels:
+      app: burst
+  template:
+    metadata:
+      labels:
+        app: burst
+    spec:
+      priorityClassName: burst-app
+      # Only schedule onto the fake burst nodegroup.
+      nodeSelector:
+        kwok-nodegroup: burst
+      terminationGracePeriodSeconds: 0
+      containers:
+        - name: app
+          image: registry.k8s.io/pause:3.9
+          resources:
+            requests:
+              cpu: "1"
+              memory: 512Mi
+            limits:
+              cpu: "1"
+              memory: 512Mi

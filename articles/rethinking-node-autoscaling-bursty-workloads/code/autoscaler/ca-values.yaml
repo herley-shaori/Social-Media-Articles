@@ -1,0 +1,23 @@
+# Helm values for cluster-autoscaler with the KWOK cloud provider.
+# Install: helm upgrade --install ca cluster-autoscaler/cluster-autoscaler \
+#            -n kube-system -f ca-values.yaml
+cloudProvider: kwok
+
+# The kwok provider ignores this, but the chart requires a value to render.
+autoDiscovery:
+  clusterName: kwok-autoscale-lab
+
+rbac:
+  create: true
+
+extraArgs:
+  # React quickly so we measure node-boot latency, not scan lag.
+  scan-interval: 5s
+  # Keep provisioned nodes for the whole run so the node timeline is clean.
+  scale-down-enabled: false
+  # Tolerate slow simulated boots (up to the 90s sweep point) without giving up.
+  max-node-provision-time: 15m
+  max-nodes-total: 60
+  # Treat every unschedulable pod as scale-up trigger promptly.
+  new-pod-scale-up-delay: 0s
+  v: 4

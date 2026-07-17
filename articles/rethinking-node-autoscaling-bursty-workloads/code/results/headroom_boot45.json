@@ -1,0 +1,747 @@
+{
+  "arm": "headroom",
+  "boot_delay_s": 45.0,
+  "replicas": 100,
+  "t0": "2026-07-17T04:16:42+00:00",
+  "pods": [
+    {
+      "name": "burst-db5cfc4c8-288zt",
+      "created_s": 3.0,
+      "scheduled_s": 3.0,
+      "ready_s": 3.0
+    },
+    {
+      "name": "burst-db5cfc4c8-2f75l",
+      "created_s": 0.0,
+      "scheduled_s": 0.0,
+      "ready_s": 0.0
+    },
+    {
+      "name": "burst-db5cfc4c8-2rg4h",
+      "created_s": 5.0,
+      "scheduled_s": 5.0,
+      "ready_s": 5.0
+    },
+    {
+      "name": "burst-db5cfc4c8-2tx5b",
+      "created_s": 5.0,
+      "scheduled_s": 5.0,
+      "ready_s": 5.0
+    },
+    {
+      "name": "burst-db5cfc4c8-48fhl",
+      "created_s": 4.0,
+      "scheduled_s": 4.0,
+      "ready_s": 4.0
+    },
+    {
+      "name": "burst-db5cfc4c8-4ckkr",
+      "created_s": 3.0,
+      "scheduled_s": 3.0,
+      "ready_s": 3.0
+    },
+    {
+      "name": "burst-db5cfc4c8-4cqm4",
+      "created_s": 2.0,
+      "scheduled_s": 2.0,
+      "ready_s": 2.0
+    },
+    {
+      "name": "burst-db5cfc4c8-4j5n9",
+      "created_s": 4.0,
+      "scheduled_s": 4.0,
+      "ready_s": 4.0
+    },
+    {
+      "name": "burst-db5cfc4c8-4xcs7",
+      "created_s": 3.0,
+      "scheduled_s": 3.0,
+      "ready_s": 3.0
+    },
+    {
+      "name": "burst-db5cfc4c8-56k5h",
+      "created_s": 4.0,
+      "scheduled_s": 4.0,
+      "ready_s": 4.0
+    },
+    {
+      "name": "burst-db5cfc4c8-59sfl",
+      "created_s": 1.0,
+      "scheduled_s": 1.0,
+      "ready_s": 1.0
+    },
+    {
+      "name": "burst-db5cfc4c8-5gqh2",
+      "created_s": 5.0,
+      "scheduled_s": 5.0,
+      "ready_s": 5.0
+    },
+    {
+      "name": "burst-db5cfc4c8-5nms9",
+      "created_s": 2.0,
+      "scheduled_s": 2.0,
+      "ready_s": 2.0
+    },
+    {
+      "name": "burst-db5cfc4c8-5s6px",
+      "created_s": 0.0,
+      "scheduled_s": 0.0,
+      "ready_s": 0.0
+    },
+    {
+      "name": "burst-db5cfc4c8-7d5lt",
+      "created_s": 3.0,
+      "scheduled_s": 3.0,
+      "ready_s": 3.0
+    },
+    {
+      "name": "burst-db5cfc4c8-7xjh4",
+      "created_s": 0.0,
+      "scheduled_s": 0.0,
+      "ready_s": 0.0
+    },
+    {
+      "name": "burst-db5cfc4c8-87hp5",
+      "created_s": 3.0,
+      "scheduled_s": 3.0,
+      "ready_s": 3.0
+    },
+    {
+      "name": "burst-db5cfc4c8-87l8h",
+      "created_s": 3.0,
+      "scheduled_s": 3.0,
+      "ready_s": 3.0
+    },
+    {
+      "name": "burst-db5cfc4c8-8d25t",
+      "created_s": 1.0,
+      "scheduled_s": 1.0,
+      "ready_s": 1.0
+    },
+    {
+      "name": "burst-db5cfc4c8-8h8sp",
+      "created_s": 2.0,
+      "scheduled_s": 2.0,
+      "ready_s": 2.0
+    },
+    {
+      "name": "burst-db5cfc4c8-8k5bn",
+      "created_s": 4.0,
+      "scheduled_s": 4.0,
+      "ready_s": 4.0
+    },
+    {
+      "name": "burst-db5cfc4c8-8m6sq",
+      "created_s": 5.0,
+      "scheduled_s": 5.0,
+      "ready_s": 5.0
+    },
+    {
+      "name": "burst-db5cfc4c8-8sljk",
+      "created_s": 0.0,
+      "scheduled_s": 0.0,
+      "ready_s": 0.0
+    },
+    {
+      "name": "burst-db5cfc4c8-8vggz",
+      "created_s": 1.0,
+      "scheduled_s": 1.0,
+      "ready_s": 1.0
+    },
+    {
+      "name": "burst-db5cfc4c8-8vqgf",
+      "created_s": 0.0,
+      "scheduled_s": 0.0,
+      "ready_s": 0.0
+    },
+    {
+      "name": "burst-db5cfc4c8-96jv9",
+      "created_s": 4.0,
+      "scheduled_s": 4.0,
+      "ready_s": 4.0
+    },
+    {
+      "name": "burst-db5cfc4c8-brh94",
+      "created_s": 1.0,
+      "scheduled_s": 1.0,
+      "ready_s": 1.0
+    },
+    {
+      "name": "burst-db5cfc4c8-cbdzj",
+      "created_s": 3.0,
+      "scheduled_s": 3.0,
+      "ready_s": 3.0
+    },
+    {
+      "name": "burst-db5cfc4c8-cd7gx",
+      "created_s": 3.0,
+      "scheduled_s": 3.0,
+      "ready_s": 3.0
+    },
+    {
+      "name": "burst-db5cfc4c8-cdqcw",
+      "created_s": 0.0,
+      "scheduled_s": 0.0,
+      "ready_s": 0.0
+    },
+    {
+      "name": "burst-db5cfc4c8-cfk6x",
+      "created_s": 1.0,
+      "scheduled_s": 1.0,
+      "ready_s": 1.0
+    },
+    {
+      "name": "burst-db5cfc4c8-d4phk",
+      "created_s": 1.0,
+      "scheduled_s": 1.0,
+      "ready_s": 1.0
+    },
+    {
+      "name": "burst-db5cfc4c8-d5vq8",
+      "created_s": 2.0,
+      "scheduled_s": 2.0,
+      "ready_s": 2.0
+    },
+    {
+      "name": "burst-db5cfc4c8-d8hkw",
+      "created_s": 5.0,
+      "scheduled_s": 5.0,
+      "ready_s": 5.0
+    },
+    {
+      "name": "burst-db5cfc4c8-dcjld",
+      "created_s": 2.0,
+      "scheduled_s": 2.0,
+      "ready_s": 2.0
+    },
+    {
+      "name": "burst-db5cfc4c8-dh2gw",
+      "created_s": 1.0,
+      "scheduled_s": 1.0,
+      "ready_s": 1.0
+    },
+    {
+      "name": "burst-db5cfc4c8-f6j6l",
+      "created_s": 5.0,
+      "scheduled_s": 5.0,
+      "ready_s": 5.0
+    },
+    {
+      "name": "burst-db5cfc4c8-fccvk",
+      "created_s": 1.0,
+      "scheduled_s": 1.0,
+      "ready_s": 1.0
+    },
+    {
+      "name": "burst-db5cfc4c8-fhcpx",
+      "created_s": 5.0,
+      "scheduled_s": 5.0,
+      "ready_s": 5.0
+    },
+    {
+      "name": "burst-db5cfc4c8-fr8jz",
+      "created_s": 1.0,
+      "scheduled_s": 1.0,
+      "ready_s": 1.0
+    },
+    {
+      "name": "burst-db5cfc4c8-fvf7m",
+      "created_s": 1.0,
+      "scheduled_s": 1.0,
+      "ready_s": 1.0
+    },
+    {
+      "name": "burst-db5cfc4c8-gtljv",
+      "created_s": 2.0,
+      "scheduled_s": 2.0,
+      "ready_s": 2.0
+    },
+    {
+      "name": "burst-db5cfc4c8-gwp6t",
+      "created_s": 0.0,
+      "scheduled_s": 0.0,
+      "ready_s": 0.0
+    },
+    {
+      "name": "burst-db5cfc4c8-gznb6",
+      "created_s": 3.0,
+      "scheduled_s": 3.0,
+      "ready_s": 3.0
+    },
+    {
+      "name": "burst-db5cfc4c8-hdd7f",
+      "created_s": 1.0,
+      "scheduled_s": 1.0,
+      "ready_s": 1.0
+    },
+    {
+      "name": "burst-db5cfc4c8-hnj26",
+      "created_s": 2.0,
+      "scheduled_s": 2.0,
+      "ready_s": 2.0
+    },
+    {
+      "name": "burst-db5cfc4c8-hp5gw",
+      "created_s": 2.0,
+      "scheduled_s": 2.0,
+      "ready_s": 2.0
+    },
+    {
+      "name": "burst-db5cfc4c8-hz46p",
+      "created_s": 2.0,
+      "scheduled_s": 2.0,
+      "ready_s": 2.0
+    },
+    {
+      "name": "burst-db5cfc4c8-j4dhp",
+      "created_s": 3.0,
+      "scheduled_s": 3.0,
+      "ready_s": 3.0
+    },
+    {
+      "name": "burst-db5cfc4c8-j6k92",
+      "created_s": 1.0,
+      "scheduled_s": 1.0,
+      "ready_s": 1.0
+    },
+    {
+      "name": "burst-db5cfc4c8-k4kqs",
+      "created_s": 5.0,
+      "scheduled_s": 5.0,
+      "ready_s": 5.0
+    },
+    {
+      "name": "burst-db5cfc4c8-k77fm",
+      "created_s": 1.0,
+      "scheduled_s": 1.0,
+      "ready_s": 1.0
+    },
+    {
+      "name": "burst-db5cfc4c8-kcrrz",
+      "created_s": 5.0,
+      "scheduled_s": 5.0,
+      "ready_s": 5.0
+    },
+    {
+      "name": "burst-db5cfc4c8-kd2lw",
+      "created_s": 0.0,
+      "scheduled_s": 0.0,
+      "ready_s": 0.0
+    },
+    {
+      "name": "burst-db5cfc4c8-kktv8",
+      "created_s": 3.0,
+      "scheduled_s": 3.0,
+      "ready_s": 3.0
+    },
+    {
+      "name": "burst-db5cfc4c8-kn89x",
+      "created_s": 4.0,
+      "scheduled_s": 4.0,
+      "ready_s": 4.0
+    },
+    {
+      "name": "burst-db5cfc4c8-kw49n",
+      "created_s": 0.0,
+      "scheduled_s": 0.0,
+      "ready_s": 0.0
+    },
+    {
+      "name": "burst-db5cfc4c8-kwckq",
+      "created_s": 4.0,
+      "scheduled_s": 4.0,
+      "ready_s": 4.0
+    },
+    {
+      "name": "burst-db5cfc4c8-kz9r5",
+      "created_s": 3.0,
+      "scheduled_s": 3.0,
+      "ready_s": 3.0
+    },
+    {
+      "name": "burst-db5cfc4c8-l268b",
+      "created_s": 3.0,
+      "scheduled_s": 3.0,
+      "ready_s": 3.0
+    },
+    {
+      "name": "burst-db5cfc4c8-l9ln7",
+      "created_s": 5.0,
+      "scheduled_s": 5.0,
+      "ready_s": 5.0
+    },
+    {
+      "name": "burst-db5cfc4c8-ldp6r",
+      "created_s": 4.0,
+      "scheduled_s": 4.0,
+      "ready_s": 4.0
+    },
+    {
+      "name": "burst-db5cfc4c8-m9nxr",
+      "created_s": 0.0,
+      "scheduled_s": 0.0,
+      "ready_s": 0.0
+    },
+    {
+      "name": "burst-db5cfc4c8-mc6b2",
+      "created_s": 4.0,
+      "scheduled_s": 4.0,
+      "ready_s": 4.0
+    },
+    {
+      "name": "burst-db5cfc4c8-mh7sb",
+      "created_s": 5.0,
+      "scheduled_s": 5.0,
+      "ready_s": 5.0
+    },
+    {
+      "name": "burst-db5cfc4c8-nkzrt",
+      "created_s": 3.0,
+      "scheduled_s": 3.0,
+      "ready_s": 3.0
+    },
+    {
+      "name": "burst-db5cfc4c8-nw4qz",
+      "created_s": 2.0,
+      "scheduled_s": 2.0,
+      "ready_s": 2.0
+    },
+    {
+      "name": "burst-db5cfc4c8-nzdcx",
+      "created_s": 4.0,
+      "scheduled_s": 4.0,
+      "ready_s": 4.0
+    },
+    {
+      "name": "burst-db5cfc4c8-pcbkz",
+      "created_s": 4.0,
+      "scheduled_s": 4.0,
+      "ready_s": 4.0
+    },
+    {
+      "name": "burst-db5cfc4c8-prt96",
+      "created_s": 1.0,
+      "scheduled_s": 1.0,
+      "ready_s": 1.0
+    },
+    {
+      "name": "burst-db5cfc4c8-q2nfc",
+      "created_s": 2.0,
+      "scheduled_s": 2.0,
+      "ready_s": 2.0
+    },
+    {
+      "name": "burst-db5cfc4c8-q5pfk",
+      "created_s": 3.0,
+      "scheduled_s": 3.0,
+      "ready_s": 3.0
+    },
+    {
+      "name": "burst-db5cfc4c8-qbmjh",
+      "created_s": 4.0,
+      "scheduled_s": 4.0,
+      "ready_s": 4.0
+    },
+    {
+      "name": "burst-db5cfc4c8-qk6rx",
+      "created_s": 4.0,
+      "scheduled_s": 4.0,
+      "ready_s": 4.0
+    },
+    {
+      "name": "burst-db5cfc4c8-rdzg9",
+      "created_s": 2.0,
+      "scheduled_s": 2.0,
+      "ready_s": 2.0
+    },
+    {
+      "name": "burst-db5cfc4c8-rfzlm",
+      "created_s": 3.0,
+      "scheduled_s": 3.0,
+      "ready_s": 3.0
+    },
+    {
+      "name": "burst-db5cfc4c8-rgxdp",
+      "created_s": 2.0,
+      "scheduled_s": 2.0,
+      "ready_s": 2.0
+    },
+    {
+      "name": "burst-db5cfc4c8-rlhxj",
+      "created_s": 5.0,
+      "scheduled_s": 5.0,
+      "ready_s": 5.0
+    },
+    {
+      "name": "burst-db5cfc4c8-rln4p",
+      "created_s": 4.0,
+      "scheduled_s": 4.0,
+      "ready_s": 4.0
+    },
+    {
+      "name": "burst-db5cfc4c8-rvz2d",
+      "created_s": 4.0,
+      "scheduled_s": 4.0,
+      "ready_s": 4.0
+    },
+    {
+      "name": "burst-db5cfc4c8-rxtl7",
+      "created_s": 4.0,
+      "scheduled_s": 4.0,
+      "ready_s": 4.0
+    },
+    {
+      "name": "burst-db5cfc4c8-s2v6s",
+      "created_s": 2.0,
+      "scheduled_s": 2.0,
+      "ready_s": 2.0
+    },
+    {
+      "name": "burst-db5cfc4c8-sgv25",
+      "created_s": 2.0,
+      "scheduled_s": 2.0,
+      "ready_s": 2.0
+    },
+    {
+      "name": "burst-db5cfc4c8-tmvt5",
+      "created_s": 3.0,
+      "scheduled_s": 3.0,
+      "ready_s": 3.0
+    },
+    {
+      "name": "burst-db5cfc4c8-trwnb",
+      "created_s": 4.0,
+      "scheduled_s": 4.0,
+      "ready_s": 4.0
+    },
+    {
+      "name": "burst-db5cfc4c8-tttwn",
+      "created_s": 2.0,
+      "scheduled_s": 2.0,
+      "ready_s": 2.0
+    },
+    {
+      "name": "burst-db5cfc4c8-v2zxv",
+      "created_s": 3.0,
+      "scheduled_s": 3.0,
+      "ready_s": 3.0
+    },
+    {
+      "name": "burst-db5cfc4c8-vl9pn",
+      "created_s": 4.0,
+      "scheduled_s": 4.0,
+      "ready_s": 4.0
+    },
+    {
+      "name": "burst-db5cfc4c8-vqdjr",
+      "created_s": 4.0,
+      "scheduled_s": 4.0,
+      "ready_s": 4.0
+    },
+    {
+      "name": "burst-db5cfc4c8-vtbmb",
+      "created_s": 4.0,
+      "scheduled_s": 4.0,
+      "ready_s": 4.0
+    },
+    {
+      "name": "burst-db5cfc4c8-vwfs6",
+      "created_s": 1.0,
+      "scheduled_s": 1.0,
+      "ready_s": 1.0
+    },
+    {
+      "name": "burst-db5cfc4c8-w7fx6",
+      "created_s": 1.0,
+      "scheduled_s": 1.0,
+      "ready_s": 1.0
+    },
+    {
+      "name": "burst-db5cfc4c8-wrckc",
+      "created_s": 2.0,
+      "scheduled_s": 2.0,
+      "ready_s": 2.0
+    },
+    {
+      "name": "burst-db5cfc4c8-wrlbk",
+      "created_s": 3.0,
+      "scheduled_s": 3.0,
+      "ready_s": 3.0
+    },
+    {
+      "name": "burst-db5cfc4c8-ws927",
+      "created_s": 1.0,
+      "scheduled_s": 1.0,
+      "ready_s": 1.0
+    },
+    {
+      "name": "burst-db5cfc4c8-x59dq",
+      "created_s": 2.0,
+      "scheduled_s": 2.0,
+      "ready_s": 2.0
+    },
+    {
+      "name": "burst-db5cfc4c8-xcvvj",
+      "created_s": 1.0,
+      "scheduled_s": 1.0,
+      "ready_s": 1.0
+    },
+    {
+      "name": "burst-db5cfc4c8-xsp7n",
+      "created_s": 1.0,
+      "scheduled_s": 1.0,
+      "ready_s": 1.0
+    },
+    {
+      "name": "burst-db5cfc4c8-xwz74",
+      "created_s": 2.0,
+      "scheduled_s": 2.0,
+      "ready_s": 2.0
+    },
+    {
+      "name": "burst-db5cfc4c8-z8b7l",
+      "created_s": 0.0,
+      "scheduled_s": 0.0,
+      "ready_s": 0.0
+    }
+  ],
+  "nodes": [
+    {
+      "name": "burst-2z42r",
+      "created_s": -53.0,
+      "ready_s": -53.0
+    },
+    {
+      "name": "burst-8bztn",
+      "created_s": -49.0,
+      "ready_s": -49.0
+    },
+    {
+      "name": "burst-8vvrb",
+      "created_s": -50.0,
+      "ready_s": -50.0
+    },
+    {
+      "name": "burst-96k8k",
+      "created_s": -50.0,
+      "ready_s": -50.0
+    },
+    {
+      "name": "burst-b528d",
+      "created_s": -53.0,
+      "ready_s": -53.0
+    },
+    {
+      "name": "burst-bw6hj",
+      "created_s": -53.0,
+      "ready_s": -53.0
+    },
+    {
+      "name": "burst-dmbjs",
+      "created_s": -49.0,
+      "ready_s": -49.0
+    },
+    {
+      "name": "burst-f42xh",
+      "created_s": -53.0,
+      "ready_s": -53.0
+    },
+    {
+      "name": "burst-fthmr",
+      "created_s": -53.0,
+      "ready_s": -53.0
+    },
+    {
+      "name": "burst-hzw7c",
+      "created_s": -51.0,
+      "ready_s": -51.0
+    },
+    {
+      "name": "burst-jntv5",
+      "created_s": -49.0,
+      "ready_s": -49.0
+    },
+    {
+      "name": "burst-l4h8n",
+      "created_s": -53.0,
+      "ready_s": -53.0
+    },
+    {
+      "name": "burst-n9cmn",
+      "created_s": -53.0,
+      "ready_s": -53.0
+    },
+    {
+      "name": "burst-rcch9",
+      "created_s": -53.0,
+      "ready_s": -53.0
+    },
+    {
+      "name": "burst-spzr5",
+      "created_s": -53.0,
+      "ready_s": -53.0
+    }
+  ],
+  "series": [
+    {
+      "t": 0.14,
+      "ready_pods": 0,
+      "ready_nodes": 15,
+      "total_nodes": 15
+    },
+    {
+      "t": 1.24,
+      "ready_pods": 0,
+      "ready_nodes": 15,
+      "total_nodes": 15
+    },
+    {
+      "t": 2.34,
+      "ready_pods": 0,
+      "ready_nodes": 15,
+      "total_nodes": 15
+    },
+    {
+      "t": 3.44,
+      "ready_pods": 0,
+      "ready_nodes": 15,
+      "total_nodes": 15
+    },
+    {
+      "t": 4.53,
+      "ready_pods": 11,
+      "ready_nodes": 15,
+      "total_nodes": 15
+    },
+    {
+      "t": 5.65,
+      "ready_pods": 31,
+      "ready_nodes": 15,
+      "total_nodes": 15
+    },
+    {
+      "t": 6.77,
+      "ready_pods": 54,
+      "ready_nodes": 15,
+      "total_nodes": 15
+    },
+    {
+      "t": 7.89,
+      "ready_pods": 75,
+      "ready_nodes": 15,
+      "total_nodes": 15
+    },
+    {
+      "t": 9.02,
+      "ready_pods": 97,
+      "ready_nodes": 15,
+      "total_nodes": 15
+    },
+    {
+      "t": 10.16,
+      "ready_pods": 100,
+      "ready_nodes": 15,
+      "total_nodes": 15
+    }
+  ]
+}

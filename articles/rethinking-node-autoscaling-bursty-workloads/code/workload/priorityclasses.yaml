@@ -1,0 +1,19 @@
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: burst-app
+# Real burst traffic. Higher priority than headroom, so it preempts the
+# pause pods and takes their warm capacity immediately.
+value: 100000
+globalDefault: false
+description: "Latency-sensitive burst workload."
+---
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: headroom
+# Pause pods that reserve warm capacity. Negative priority so they are the
+# first thing evicted when real work needs the room.
+value: -10
+globalDefault: false
+description: "Low-priority placeholder pods that keep spare nodes warm."
