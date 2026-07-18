@@ -1,0 +1,25 @@
+### Compiling ...
+compiled OK (both versions build — the v1 bug is NOT a compile error)
+
+### v1 — without polymorphism (watch the WHATSAPP line)
+== v1: switch-on-type ==
+[SMTP] -> alice@example.com | Subject: Notification  Your invoice is ready
+REJECT SMS -> not-a-number (failed validation)
+[PUSH] -> device-token-abc | {"title":"Notification","body":"You have 3 new likes"}
+[WA]   -> hello world | *Notification* Your order shipped
+
+### v2 — with polymorphism (same input, WhatsApp now rejected)
+== v2: polymorphic dispatch ==
+[SMTP] -> alice@example.com | Subject: Notification  Your invoice is ready
+REJECT SMS -> not-a-number (failed validation)
+[PUSH] -> device-token-abc | {"title":"Notification","body":"You have 3 new likes"}
+REJECT WHATSAPP -> hello world (failed validation)
+
+### sanity test (assertions enabled)
+all sanity checks passed
+
+### compiler enforcement: a v2 channel that forgets validate() will NOT compile
+javac rejected it (as intended):
+build/BrokenChannel.java:3: error: BrokenChannel is not abstract and does not override abstract method validate(String) in Channel
+
+done.

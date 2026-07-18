@@ -1,0 +1,30 @@
+%%{init: {'theme':'base','themeVariables':{'clusterBkg':'#ffffff','clusterBorder':'#8592a0','lineColor':'#5a6675','edgeLabelBackground':'#ffffff','fontFamily':'IBM Plex Sans, sans-serif'}}}%%
+flowchart TB
+    n["Notification<br/>(data only: channel, recipient, message)"]
+
+    subgraph svc["NotificationService (four switches)"]
+        v["validate()<br/>switch(channel)"]
+        f["format()<br/>switch(channel)"]
+        s["send()<br/>switch(channel)"]
+        r["retryDelaySeconds()<br/>switch(channel)"]
+    end
+
+    n --> svc
+    v --> cases1["EMAIL / SMS / PUSH /<br/><b>WHATSAPP: no case</b>"]
+    f --> cases2["EMAIL / SMS / PUSH / WHATSAPP"]
+    s --> cases3["EMAIL / SMS / PUSH / WHATSAPP"]
+    r --> cases4["EMAIL / SMS / PUSH / WHATSAPP"]
+
+    note["Add a channel = edit all four switches.<br/>Miss one (validate) and it still compiles —<br/>the failure only appears at runtime."]
+    cases1 -.-> note
+
+    classDef data fill:#eef2f7,stroke:#38618c,color:#1f2933;
+    classDef sw fill:#fdecef,stroke:#d1495b,color:#1f2933;
+    classDef bug fill:#ffd9d9,stroke:#c1121f,color:#7a0b16;
+    classDef ok fill:#e7f6f2,stroke:#2a9d8f,color:#1f2933;
+    classDef note fill:#fff6e5,stroke:#e08a1e,color:#5b4708;
+    class n data;
+    class v,f,s,r sw;
+    class cases1 bug;
+    class cases2,cases3,cases4 ok;
+    class note note;
