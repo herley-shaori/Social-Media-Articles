@@ -1,0 +1,29 @@
+%%{init: {'theme':'base','themeVariables':{'clusterBkg':'#ffffff','clusterBorder':'#8592a0','lineColor':'#5a6675','edgeLabelBackground':'#ffffff','fontFamily':'IBM Plex Sans, sans-serif'}}}%%
+flowchart LR
+    subgraph fs["False sharing (one shared line)"]
+        direction TB
+        c1a["Core 1<br/>writes counter A"]
+        c2a["Core 2<br/>writes counter B"]
+        linea["Cache line (64-128 B)<br/><b>[ A | B ]</b>"]
+        c1a -- "write A" --> linea
+        c2a -- "write B" --> linea
+        linea -. "each write invalidates<br/>the other core's copy<br/>(line ping-pongs)" .-> c1a
+        linea -. " " .-> c2a
+    end
+
+    subgraph pad["Padded (separate lines)"]
+        direction TB
+        c1b["Core 1<br/>writes counter A"]
+        c2b["Core 2<br/>writes counter B"]
+        lineb1["Cache line #1<br/><b>[ A | .. ]</b>"]
+        lineb2["Cache line #2<br/><b>[ B | .. ]</b>"]
+        c1b -- "write A" --> lineb1
+        c2b -- "write B" --> lineb2
+    end
+
+    classDef core fill:#eef2f7,stroke:#38618c,color:#1f2933;
+    classDef bad fill:#fdecef,stroke:#d1495b,color:#7a0b16;
+    classDef good fill:#e7f6f2,stroke:#2a9d8f,color:#0f4a37;
+    class c1a,c2a,c1b,c2b core;
+    class linea bad;
+    class lineb1,lineb2 good;

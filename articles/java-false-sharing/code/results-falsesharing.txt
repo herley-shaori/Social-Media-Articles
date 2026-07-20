@@ -1,0 +1,249 @@
+# JMH version: 1.37
+# VM version: JDK 25.0.2, OpenJDK 64-Bit Server VM, 25.0.2+10-LTS
+# VM invoker: /Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/java
+# VM options: <none>
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 2 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 2 threads (1 group; 1x "paddedWriterA", 1x "paddedWriterB" in each group), will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: falsesharing.FalseSharingBenchmark.padded
+
+# Run progress: 0,00% complete, ETA 00:00:40
+# Fork: 1 of 4
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/sarahsyarofina/kodingan/pribadi/learning/publication/Social-Media-Articles/articles/java-false-sharing/code/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 1230484,021 ops/ms
+# Warmup Iteration   2: 1243113,700 ops/ms
+Iteration   1: 1236416,376 ops/ms
+                 paddedWriterA: 616982,901 ops/ms
+                 paddedWriterB: 619433,475 ops/ms
+
+Iteration   2: 1242307,353 ops/ms
+                 paddedWriterA: 621873,370 ops/ms
+                 paddedWriterB: 620433,982 ops/ms
+
+Iteration   3: 1234841,173 ops/ms
+                 paddedWriterA: 618004,285 ops/ms
+                 paddedWriterB: 616836,888 ops/ms
+
+
+# Run progress: 12,50% complete, ETA 00:00:36
+# Fork: 2 of 4
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/sarahsyarofina/kodingan/pribadi/learning/publication/Social-Media-Articles/articles/java-false-sharing/code/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 1244049,358 ops/ms
+# Warmup Iteration   2: 1240387,819 ops/ms
+Iteration   1: 1249118,193 ops/ms
+                 paddedWriterA: 624567,094 ops/ms
+                 paddedWriterB: 624551,099 ops/ms
+
+Iteration   2: 1242046,773 ops/ms
+                 paddedWriterA: 620787,663 ops/ms
+                 paddedWriterB: 621259,109 ops/ms
+
+Iteration   3: 1240299,397 ops/ms
+                 paddedWriterA: 619985,848 ops/ms
+                 paddedWriterB: 620313,549 ops/ms
+
+
+# Run progress: 25,00% complete, ETA 00:00:30
+# Fork: 3 of 4
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/sarahsyarofina/kodingan/pribadi/learning/publication/Social-Media-Articles/articles/java-false-sharing/code/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 1240034,970 ops/ms
+# Warmup Iteration   2: 1239891,244 ops/ms
+Iteration   1: 1225441,898 ops/ms
+                 paddedWriterA: 613097,559 ops/ms
+                 paddedWriterB: 612344,339 ops/ms
+
+Iteration   2: 1242750,999 ops/ms
+                 paddedWriterA: 621717,135 ops/ms
+                 paddedWriterB: 621033,864 ops/ms
+
+Iteration   3: 1244006,870 ops/ms
+                 paddedWriterA: 623014,845 ops/ms
+                 paddedWriterB: 620992,025 ops/ms
+
+
+# Run progress: 37,50% complete, ETA 00:00:25
+# Fork: 4 of 4
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/sarahsyarofina/kodingan/pribadi/learning/publication/Social-Media-Articles/articles/java-false-sharing/code/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 1240997,475 ops/ms
+# Warmup Iteration   2: 1242478,571 ops/ms
+Iteration   1: 1229591,513 ops/ms
+                 paddedWriterA: 615637,557 ops/ms
+                 paddedWriterB: 613953,956 ops/ms
+
+Iteration   2: 1241994,735 ops/ms
+                 paddedWriterA: 621402,226 ops/ms
+                 paddedWriterB: 620592,508 ops/ms
+
+Iteration   3: 1234191,791 ops/ms
+                 paddedWriterA: 617648,879 ops/ms
+                 paddedWriterB: 616542,912 ops/ms
+
+
+
+Result "falsesharing.FalseSharingBenchmark.padded":
+  1238583,923 ±(99.9%) 8546,478 ops/ms [Average]
+  (min, avg, max) = (1225441,898, 1238583,923, 1249118,193), stdev = 6672,528
+  CI (99.9%): [1230037,444, 1247130,401] (assumes normal distribution)
+
+Secondary result "falsesharing.FalseSharingBenchmark.padded:paddedWriterA":
+  619559,947 ±(99.9%) 4264,849 ops/ms [Average]
+  (min, avg, max) = (613097,559, 619559,947, 624567,094), stdev = 3329,714
+  CI (99.9%): [615295,098, 623824,796] (assumes normal distribution)
+
+Secondary result "falsesharing.FalseSharingBenchmark.padded:paddedWriterB":
+  619023,976 ±(99.9%) 4420,116 ops/ms [Average]
+  (min, avg, max) = (612344,339, 619023,976, 624551,099), stdev = 3450,936
+  CI (99.9%): [614603,859, 623444,092] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.2, OpenJDK 64-Bit Server VM, 25.0.2+10-LTS
+# VM invoker: /Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/java
+# VM options: <none>
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 2 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 2 threads (1 group; 1x "sharedWriterA", 1x "sharedWriterB" in each group), will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: falsesharing.FalseSharingBenchmark.shared
+
+# Run progress: 50,00% complete, ETA 00:00:20
+# Fork: 1 of 4
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/sarahsyarofina/kodingan/pribadi/learning/publication/Social-Media-Articles/articles/java-false-sharing/code/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 326093,475 ops/ms
+# Warmup Iteration   2: 329494,800 ops/ms
+Iteration   1: 324093,085 ops/ms
+                 sharedWriterA: 161934,521 ops/ms
+                 sharedWriterB: 162158,563 ops/ms
+
+Iteration   2: 324863,472 ops/ms
+                 sharedWriterA: 162408,375 ops/ms
+                 sharedWriterB: 162455,097 ops/ms
+
+Iteration   3: 325732,336 ops/ms
+                 sharedWriterA: 162999,815 ops/ms
+                 sharedWriterB: 162732,521 ops/ms
+
+
+# Run progress: 62,50% complete, ETA 00:00:15
+# Fork: 2 of 4
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/sarahsyarofina/kodingan/pribadi/learning/publication/Social-Media-Articles/articles/java-false-sharing/code/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 1233416,115 ops/ms
+# Warmup Iteration   2: 1227036,883 ops/ms
+Iteration   1: 1242406,006 ops/ms
+                 sharedWriterA: 621079,112 ops/ms
+                 sharedWriterB: 621326,894 ops/ms
+
+Iteration   2: 1239313,440 ops/ms
+                 sharedWriterA: 619748,327 ops/ms
+                 sharedWriterB: 619565,113 ops/ms
+
+Iteration   3: 1236371,373 ops/ms
+                 sharedWriterA: 618003,431 ops/ms
+                 sharedWriterB: 618367,941 ops/ms
+
+
+# Run progress: 75,00% complete, ETA 00:00:10
+# Fork: 3 of 4
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/sarahsyarofina/kodingan/pribadi/learning/publication/Social-Media-Articles/articles/java-false-sharing/code/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 336532,660 ops/ms
+# Warmup Iteration   2: 328372,110 ops/ms
+Iteration   1: 335580,769 ops/ms
+                 sharedWriterA: 167775,909 ops/ms
+                 sharedWriterB: 167804,860 ops/ms
+
+Iteration   2: 332059,882 ops/ms
+                 sharedWriterA: 165975,247 ops/ms
+                 sharedWriterB: 166084,634 ops/ms
+
+Iteration   3: 335549,961 ops/ms
+                 sharedWriterA: 167788,249 ops/ms
+                 sharedWriterB: 167761,713 ops/ms
+
+
+# Run progress: 87,50% complete, ETA 00:00:05
+# Fork: 4 of 4
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/sarahsyarofina/kodingan/pribadi/learning/publication/Social-Media-Articles/articles/java-false-sharing/code/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 1234575,775 ops/ms
+# Warmup Iteration   2: 1245892,999 ops/ms
+Iteration   1: 1244223,019 ops/ms
+                 sharedWriterA: 620826,935 ops/ms
+                 sharedWriterB: 623396,084 ops/ms
+
+Iteration   2: 1241091,920 ops/ms
+                 sharedWriterA: 620116,139 ops/ms
+                 sharedWriterB: 620975,782 ops/ms
+
+Iteration   3: 1235958,870 ops/ms
+                 sharedWriterA: 618811,937 ops/ms
+                 sharedWriterB: 617146,932 ops/ms
+
+
+
+Result "falsesharing.FalseSharingBenchmark.shared":
+  784770,344 ±(99.9%) 608888,838 ops/ms [Average]
+  (min, avg, max) = (324093,085, 784770,344, 1244223,019), stdev = 475380,354
+  CI (99.9%): [175881,506, 1393659,183] (assumes normal distribution)
+
+Secondary result "falsesharing.FalseSharingBenchmark.shared:sharedWriterA":
+  392289,000 ±(99.9%) 304327,002 ops/ms [Average]
+  (min, avg, max) = (161934,521, 392289,000, 621079,112), stdev = 237598,505
+  CI (99.9%): [87961,998, 696616,002] (assumes normal distribution)
+
+Secondary result "falsesharing.FalseSharingBenchmark.shared:sharedWriterB":
+  392481,345 ±(99.9%) 304563,019 ops/ms [Average]
+  (min, avg, max) = (162158,563, 392481,345, 623396,084), stdev = 237782,772
+  CI (99.9%): [87918,325, 697044,364] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:00:41
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark                                    Mode  Cnt        Score        Error   Units
+FalseSharingBenchmark.padded                thrpt   12  1238583,923 ±   8546,478  ops/ms
+FalseSharingBenchmark.padded:paddedWriterA  thrpt   12   619559,947 ±   4264,849  ops/ms
+FalseSharingBenchmark.padded:paddedWriterB  thrpt   12   619023,976 ±   4420,116  ops/ms
+FalseSharingBenchmark.shared                thrpt   12   784770,344 ± 608888,838  ops/ms
+FalseSharingBenchmark.shared:sharedWriterA  thrpt   12   392289,000 ± 304327,002  ops/ms
+FalseSharingBenchmark.shared:sharedWriterB  thrpt   12   392481,345 ± 304563,019  ops/ms
+
+Benchmark result is saved to results-falsesharing.json

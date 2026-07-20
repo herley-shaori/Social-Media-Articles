@@ -2,3 +2,5 @@ CLAUDE.md
 docs/superpowers/specs/
 articles/*/thread.md
 articles/*/DRAFT-*.md
+target/
+dependency-reduced-pom.xml
