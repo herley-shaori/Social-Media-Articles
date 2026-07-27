@@ -1,6 +1,6 @@
 # The Bug That Isn't in Your Code: False Sharing in Java
 
-This article has been published at: _<add LinkedIn / Medium URL here>_
+This article has been published at: https://herley-shaori.medium.com/the-bug-that-isnt-in-your-code-false-sharing-in-java-e751aaa015e3
 
 This repository holds only the runnable code and benchmarks the article references:
 
