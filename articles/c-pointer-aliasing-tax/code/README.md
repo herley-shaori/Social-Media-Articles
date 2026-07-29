@@ -1,7 +1,11 @@
 # The Aliasing Tax — Experiment Code
 
-> **Published:** draft; not yet published.
-> This directory holds the runnable code behind the article.
+> **Published:** the full article is live on Medium:
+> [The Aliasing Tax: What a Pointer Parameter Actually Costs in C](https://herley-shaori.medium.com/the-aliasing-tax-what-a-pointer-parameter-actually-costs-in-c-8443a01e1234)
+>
+> This directory holds the runnable code that the article references. Every
+> number quoted in the article was produced by `run.sh` and is recorded under
+> `results/`.
 
 Measures what a pointer parameter actually costs in C: not the copy, but the
 optimizations the compiler is no longer allowed to perform — and shows that a
