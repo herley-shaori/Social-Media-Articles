@@ -1,0 +1,17 @@
+config.N=16384
+config.reps=2000
+config.trials=5
+B.int.ptr.ns_per_elem=0.4685
+B.int.ptr.speedup=1.0000
+B.int.restrict.ns_per_elem=0.2295
+B.int.restrict.speedup=2.0413
+B.int.local.ns_per_elem=0.2042
+B.int.local.speedup=2.2939
+B.dbl.ptr.ns_per_elem=1.2208
+B.dbl.ptr.speedup=1.0000
+B.dbl.restrict.ns_per_elem=1.2295
+B.dbl.restrict.speedup=0.9929
+B.dbl.local.ns_per_elem=1.2304
+B.dbl.local.speedup=0.9922
+B.int.results_identical=1
+B.dbl.results_identical=1
