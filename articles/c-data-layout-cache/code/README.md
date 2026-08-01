@@ -35,7 +35,7 @@ does not need, and whether Struct of Arrays (SoA) improves throughput.
 
 | Aspect | Before: Array of Structs (AoS) | After: Struct of Arrays (SoA) | Why it changes the result |
 |---|---|---|---|
-| Memory layout | `Particle particles[N]`; every particle is 256 bytes | `x[N]`, `vx[N]`, and cold fields in separate arrays | The loop needs only `x` and `vx`, so it stops stepping over 248 cold bytes per particle. |
+| Memory layout | `Particle particles[N]`; every particle is 256 bytes | `x[N]`, `vx[N]`, and cold fields in separate arrays | The loop needs only 8 useful bytes per particle; AoS makes them sparse at a 256-byte stride, while SoA packs them contiguously. |
 | Hot-loop access | Loads `x` and `vx` at a 256-byte stride | Reads two contiguous float arrays | Contiguous arrays are cache- and prefetch-friendly. |
 | Generated machine code | Scalar update per particle | AVX2 vector update over contiguous floats | GCC can process eight SoA elements per vector instruction. |
 | 10,000-particle result | 6.255–8.313 ms | 0.124–0.147 ms | SoA was 42.69–57.33x faster across the three process runs. |
@@ -43,6 +43,26 @@ does not need, and whether Struct of Arrays (SoA) improves throughput.
 The algorithm did not change: both versions run the same `x += vx * 0.016f`
 update 120 times and must produce bit-for-bit identical `x` values. The only
 independent variable is how the same fields are arranged in memory.
+
+## Benchmark environment
+
+The benchmark is compiled and executed inside a **Linux container**, not by a
+Windows C compiler. Docker Desktop runs that Linux container through its WSL2
+backend. The recorded environment for these results is:
+
+| Component | Recorded value |
+|---|---|
+| Container image | `gcc:14-bookworm` |
+| Compiler | GCC 14.3.0 |
+| Container kernel | Linux 5.15.167.4-microsoft-standard-WSL2, x86_64 |
+| CPU reported in the container | 12th Gen Intel Core i9-12950HX |
+| Benchmark CPU allocation | One logical CPU (`--cpuset-cpus=0`) |
+
+Docker Desktop can expose all 24 logical CPUs of this machine to a container.
+This experiment deliberately uses one because it measures a single-threaded
+hot loop. Giving that loop more CPUs would not make it faster; it would only
+make its timing less controlled. The results are valid for an AoS-versus-SoA
+comparison in this container, not as native-Windows timings.
 
 ## Run the C benchmark with Docker
 
@@ -58,6 +78,14 @@ docker run --rm --cpuset-cpus=0 -v "${PWD}:/work" c-data-layout-cache:local /wor
 
 The first command pins the compiler family through `gcc:14-bookworm`; the
 second writes the raw result file and environment report into `results/`.
+
+To see the GCC compile command and run the C program directly, use this
+equivalent command. It prints results to the terminal but does not save the
+three raw run files:
+
+```powershell
+docker run --rm --cpuset-cpus=0 -v "${PWD}:/work" c-data-layout-cache:local -lc 'cd /work; mkdir -p build; gcc -O3 -march=x86-64-v3 -std=c11 -Wall -Wextra -Wpedantic benchmark.c -o build/benchmark; ./build/benchmark'
+```
 
 `--cpuset-cpus=0` reduces scheduler noise by keeping the benchmark on one
 container CPU. The figures compare layouts reliably within this container, but
