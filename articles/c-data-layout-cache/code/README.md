@@ -16,7 +16,7 @@ does not need, and whether Struct of Arrays (SoA) improves throughput.
 - Both representations contain the same fields and use the same deterministic
   initial values.
 - The update operation, number of updates, and compiler flags are identical.
-- The four SoA fields used by the hot loop are separately allocated, so its
+- The two SoA fields used by the hot loop are separately allocated, so their
   local pointers are declared `restrict`. This records a property the
   experiment actually guarantees and prevents pointer-alias analysis from
   obscuring the layout effect.
@@ -26,17 +26,33 @@ does not need, and whether Struct of Arrays (SoA) improves throughput.
 - Each simulation step is a full sweep through the collection. The harness
   invokes the sweep through a volatile function pointer so the compiler cannot
   legally collapse 120 sweeps into 120 updates of one particle at a time.
-- The three data sizes represent a small working set, a cache-pressure case,
+- The four data sizes represent a small working set, a cache-pressure case,
   and a RAM-dominated case. The actual cases are 1,000 (0.24 MiB), 10,000
   (2.44 MiB), 100,000 (24.41 MiB), and 524,288 (128 MiB) particles.
   `working_set_mib` is the 256-byte-per-particle representation size.
 
-## Run with Docker
+## Before and after
+
+| Aspect | Before: Array of Structs (AoS) | After: Struct of Arrays (SoA) | Why it changes the result |
+|---|---|---|---|
+| Memory layout | `Particle particles[N]`; every particle is 256 bytes | `x[N]`, `vx[N]`, and cold fields in separate arrays | The loop needs only `x` and `vx`, so it stops stepping over 248 cold bytes per particle. |
+| Hot-loop access | Loads `x` and `vx` at a 256-byte stride | Reads two contiguous float arrays | Contiguous arrays are cache- and prefetch-friendly. |
+| Generated machine code | Scalar update per particle | AVX2 vector update over contiguous floats | GCC can process eight SoA elements per vector instruction. |
+| 10,000-particle result | 6.255–8.313 ms | 0.124–0.147 ms | SoA was 42.69–57.33x faster across the three process runs. |
+
+The algorithm did not change: both versions run the same `x += vx * 0.016f`
+update 120 times and must produce bit-for-bit identical `x` values. The only
+independent variable is how the same fields are arranged in memory.
+
+## Run the C benchmark with Docker
 
 From this directory in PowerShell:
 
 ```powershell
+# Build the pinned GCC environment (needed only after a Dockerfile change).
 docker build -t c-data-layout-cache:local .
+
+# Compile benchmark.c and run the complete C benchmark.
 docker run --rm --cpuset-cpus=0 -v "${PWD}:/work" c-data-layout-cache:local /work/run.sh
 ```
 
