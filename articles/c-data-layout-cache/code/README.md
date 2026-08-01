@@ -38,7 +38,7 @@ does not need, and whether Struct of Arrays (SoA) improves throughput.
 | Memory layout | `Particle particles[N]`; every particle is 256 bytes | `x[N]`, `vx[N]`, and cold fields in separate arrays | The loop needs only 8 useful bytes per particle; AoS makes them sparse at a 256-byte stride, while SoA packs them contiguously. |
 | Hot-loop access | Loads `x` and `vx` at a 256-byte stride | Reads two contiguous float arrays | Contiguous arrays are cache- and prefetch-friendly. |
 | Generated machine code | Scalar update per particle | AVX2 vector update over contiguous floats | GCC can process eight SoA elements per vector instruction. |
-| 10,000-particle result | 6.255–8.313 ms | 0.124–0.147 ms | SoA was 42.69–57.33x faster across the three process runs. |
+| 10,000-particle result | 6.359–7.850 ms | 0.125–0.157 ms | SoA was 43.88–53.80x faster across the three process runs. |
 
 The algorithm did not change: both versions run the same `x += vx * 0.016f`
 update 120 times and must produce bit-for-bit identical `x` values. The only
@@ -52,7 +52,7 @@ backend. The recorded environment for these results is:
 
 | Component | Recorded value |
 |---|---|
-| Container image | `gcc:14-bookworm` |
+| Container image | `gcc:14-bookworm`, pinned to its Docker digest in `Dockerfile` |
 | Compiler | GCC 14.3.0 |
 | Container kernel | Linux 5.15.167.4-microsoft-standard-WSL2, x86_64 |
 | CPU reported in the container | 12th Gen Intel Core i9-12950HX |
@@ -76,8 +76,9 @@ docker build -t c-data-layout-cache:local .
 docker run --rm --cpuset-cpus=0 -v "${PWD}:/work" c-data-layout-cache:local /work/run.sh
 ```
 
-The first command pins the compiler family through `gcc:14-bookworm`; the
-second writes the raw result file and environment report into `results/`.
+The Dockerfile pins the exact `gcc:14-bookworm` image digest, so a later image
+update cannot silently change the compiler environment. The second command
+writes the raw result files and environment report into `results/`.
 
 To see the GCC compile command and run the C program directly, use this
 equivalent command. It prints results to the terminal but does not save the

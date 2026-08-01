@@ -1,7 +1,7 @@
 metadata,compiler=14.3.0
 metadata,particle_bytes=256,trials=7,steps_per_trial=120
 result,count,working_set_mib,aos_ms,soa_ms,aos_mupdates_s,soa_mupdates_s,speedup,correct
-result,count=1000,working_set_mib=0.24,aos_ms=0.182,soa_ms=0.007,aos_mupdates_s=660.11,soa_mupdates_s=16713.09,speedup=25.32,correct=1
-result,count=10000,working_set_mib=2.44,aos_ms=6.301,soa_ms=0.124,aos_mupdates_s=190.45,soa_mupdates_s=9682.34,speedup=50.84,correct=1
-result,count=100000,working_set_mib=24.41,aos_ms=57.186,soa_ms=1.275,aos_mupdates_s=209.84,soa_mupdates_s=9408.79,speedup=44.84,correct=1
-result,count=524288,working_set_mib=128.00,aos_ms=478.143,soa_ms=15.658,aos_mupdates_s=131.58,soa_mupdates_s=4018.06,speedup=30.54,correct=1
+result,count=1000,working_set_mib=0.24,aos_ms=0.230,soa_ms=0.009,aos_mupdates_s=520.73,soa_mupdates_s=13756.74,speedup=26.42,correct=1
+result,count=10000,working_set_mib=2.44,aos_ms=6.910,soa_ms=0.157,aos_mupdates_s=173.67,soa_mupdates_s=7620.84,speedup=43.88,correct=1
+result,count=100000,working_set_mib=24.41,aos_ms=69.068,soa_ms=1.786,aos_mupdates_s=173.74,soa_mupdates_s=6720.43,speedup=38.68,correct=1
+result,count=524288,working_set_mib=128.00,aos_ms=436.162,soa_ms=12.335,aos_mupdates_s=144.25,soa_mupdates_s=5100.56,speedup=35.36,correct=1
