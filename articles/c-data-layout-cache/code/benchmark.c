@@ -194,7 +194,7 @@ static void run_case(size_t count) {
 }
 
 int main(void) {
-    const size_t cases[] = {4096, 65536, 524288};
+    const size_t cases[] = {1000, 10000, 100000, 524288};
     printf("metadata,compiler=%s\n", __VERSION__);
     printf("metadata,particle_bytes=%zu,trials=7,steps_per_trial=120\n", sizeof(Particle));
     printf("result,count,working_set_mib,aos_ms,soa_ms,aos_mupdates_s,soa_mupdates_s,speedup,correct\n");

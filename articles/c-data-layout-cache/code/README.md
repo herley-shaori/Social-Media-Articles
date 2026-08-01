@@ -1,5 +1,7 @@
 # Data Layout and Cache Locality — Experiment Code
 
+> **Article:** draft — not yet published on Medium.
+
 This directory contains the reproducible experiment for a C article about a
 seemingly harmless data-layout choice: an array of 256-byte `Particle` structs
 versus a struct of arrays holding the exact same fields.
@@ -25,8 +27,9 @@ does not need, and whether Struct of Arrays (SoA) improves throughput.
   invokes the sweep through a volatile function pointer so the compiler cannot
   legally collapse 120 sweeps into 120 updates of one particle at a time.
 - The three data sizes represent a small working set, a cache-pressure case,
-  and a RAM-dominated case. `working_set_mib` is the 256-byte-per-particle
-  representation size.
+  and a RAM-dominated case. The actual cases are 1,000 (0.24 MiB), 10,000
+  (2.44 MiB), 100,000 (24.41 MiB), and 524,288 (128 MiB) particles.
+  `working_set_mib` is the 256-byte-per-particle representation size.
 
 ## Run with Docker
 
