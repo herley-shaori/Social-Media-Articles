@@ -1,0 +1,4 @@
+compiler=gcc (GCC) 14.3.0
+kernel=Linux 5.15.167.4-microsoft-standard-WSL2 x86_64 GNU/Linux
+cpu=12th Gen Intel(R) Core(TM) i9-12950HX
+container_cpus=1

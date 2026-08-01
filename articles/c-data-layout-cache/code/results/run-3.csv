@@ -1,0 +1,6 @@
+metadata,compiler=14.3.0
+metadata,particle_bytes=256,trials=7,steps_per_trial=120
+result,count,working_set_mib,aos_ms,soa_ms,aos_mupdates_s,soa_mupdates_s,speedup,correct
+result,count=4096,working_set_mib=1.00,aos_ms=0.984,soa_ms=0.029,aos_mupdates_s=499.52,soa_mupdates_s=16950.72,speedup=33.93,correct=1
+result,count=65536,working_set_mib=16.00,aos_ms=35.950,soa_ms=0.747,aos_mupdates_s=218.76,soa_mupdates_s=10529.92,speedup=48.14,correct=1
+result,count=524288,working_set_mib=128.00,aos_ms=504.110,soa_ms=15.558,aos_mupdates_s=124.80,soa_mupdates_s=4043.81,speedup=32.40,correct=1
