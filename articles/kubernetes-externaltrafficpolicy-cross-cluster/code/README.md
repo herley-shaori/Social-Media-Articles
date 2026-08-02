@@ -12,9 +12,15 @@ the worker endpoint, so it succeeds. With `externalTrafficPolicy: Local`, it
 must use an endpoint local to the receiving node. There is none on the
 control-plane node, so the identical call times out.
 
-This is not a Service selector or DNS error. It is the trade-off made when
-preserving the original client source IP: the load balancer must only target
-nodes that have local, healthy endpoints.
+The API is **not** missing or unhealthy. The Service and its EndpointSlice are
+healthy; the single API Pod is intentionally placed on the worker. The failure
+is a configuration conflict: the caller targets the control-plane, but `Local`
+forbids that node from forwarding to the healthy endpoint on the worker.
+
+This is not a Service selector or DNS error. `Local` is often selected to
+preserve the original client source IP. The matching requirement is that the
+load balancer or gateway must target only nodes that have local, healthy
+endpoints.
 
 ## Prerequisites
 
@@ -52,9 +58,19 @@ kind delete cluster --name cross-b
 ## Topology
 
 ```text
-Cluster A                                      Cluster B
-checkout-client ──> control-plane IP:30080 ──> worker: payment-api
-                         no local endpoint
+Incorrect configuration
+
+Cluster A                          Cluster B
+---------                          --------------------------------------
+checkout-client                    control-plane:30080
+       |                                     |
+       | HTTP request                        | externalTrafficPolicy: Local
+       +------------------------------------>| cannot forward to worker
+                                             |
+                                             +----X timeout
+
+                                     worker: payment-api Pod (healthy)
+                                     EndpointSlice -> 10.244.1.2:8080
 ```
 
 The NodePort is a deliberately simple lab transport. In production, the
@@ -62,6 +78,16 @@ caller would normally use an internal load balancer, gateway, or service-mesh
 endpoint. The requirement is unchanged: when `externalTrafficPolicy: Local`
 is used, that frontend must health-check and target only nodes with local
 endpoints.
+
+```text
+Correct configuration with externalTrafficPolicy: Local
+
+Cluster A                          Cluster B
+---------                          --------------------------------------
+checkout-client -> load balancer -> worker:30080 -> payment-api Pod
+                    selects only       local endpoint
+                    healthy workers
+```
 
 `payment-api.yaml` is the `Cluster` phase and `payment-api-local.yaml` is the
 same Service configured for the failing `Local` phase.
