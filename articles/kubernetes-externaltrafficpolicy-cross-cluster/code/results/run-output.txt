@@ -1,0 +1,10 @@
+﻿Cross-cluster externalTrafficPolicy experiment
+
+Cluster B control-plane=172.18.0.3; payment endpoint=172.18.0.3:30080
+NAME                          READY   STATUS    RESTARTS   AGE   IP           NODE             NOMINATED NODE   READINESS GATES
+payment-api-798d75f4d-nvjwr   1/1     Running   0          22s   10.244.1.2   cross-b-worker   <none>           <none>
+NAME                ADDRESSTYPE   PORTS   ENDPOINTS    AGE
+payment-api-wxdfb   IPv4          8080    10.244.1.2   22s
+[externalTrafficPolicy=Cluster] exit=0 output=payment-api-ok
+[externalTrafficPolicy=Local] exit=1 output=wget: download timed out command terminated with exit code 1
+PASS: Cluster forwards to the remote worker; Local rejects traffic on the endpoint-less control-plane node.
